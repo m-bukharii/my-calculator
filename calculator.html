@@ -71,28 +71,28 @@
             <tr>
                 <td colspan="3"><button onclick="pushBtn(this);"
                         style="background-color: #d64747;color:white">AC</button></td>
-                <td><button onclick="pushBtn(this);" style="background-color:rgb(15, 221, 49); color: white;">/</button>
+                <td><button onclick="pushBtn(this);" style="background-color:rgb(22, 211, 69); color: white;">/</button>
                 </td>
             </tr>
             <tr>
                 <td><button onclick="pushBtn(this);">7</button></td>
                 <td><button onclick="pushBtn(this);">8</button></td>
                 <td><button onclick="pushBtn(this);">9</button></td>
-                <td><button onclick="pushBtn(this);" style="background-color:rgb(15, 221, 49); color: white;">*</button>
+                <td><button onclick="pushBtn(this);" style="background-color:rgb(22, 211, 69); color: white;">*</button>
                 </td>
             </tr>
             <tr>
                 <td><button onclick="pushBtn(this);">4</button></td>
                 <td><button onclick="pushBtn(this);">5</button></td>
                 <td><button onclick="pushBtn(this);">6</button></td>
-                <td><button onclick="pushBtn(this);" style="background-color:rgb(15, 221, 49); color: white;">-</button>
+                <td><button onclick="pushBtn(this);" style="background-color:rgb(22, 211, 69); color: white;">-</button>
                 </td>
             </tr>
             <tr>
                 <td><button onclick="pushBtn(this);">1</button></td>
                 <td><button onclick="pushBtn(this);">2</button></td>
                 <td><button onclick="pushBtn(this);">3</button></td>
-                <td><button onclick="pushBtn(this);" style="background-color:rgb(15, 221, 49); color: white;">+</button>
+                <td><button onclick="pushBtn(this);" style="background-color:rgb(22, 211, 69); color: white;">+</button>
                 </td>
             </tr>
             <tr>
@@ -106,29 +106,33 @@
     <script>
         var inputLabel = document.getElementById('inputLabel');
         var maxLength = Infinity;
-
+      
         function pushBtn(obj) {
-            var pushed = obj.innerHTML;
-
-            if (pushed == '=') {
-                inputLabel.innerHTML = eval(inputLabel.innerHTML);
-
-            } else if (pushed == 'AC') {
-                inputLabel.innerHTML = '';
-
+          var pushed = obj.innerHTML;
+      
+          if (pushed == '=') {
+            inputLabel.innerHTML = eval(inputLabel.innerHTML);
+      
+          } else if (pushed == 'AC') {
+            inputLabel.innerHTML = '';
+      
+          } else {
+            if (inputLabel.innerHTML === '0' && pushed !== '.') {
+              inputLabel.innerHTML = pushed;
+      
+      
             } else {
-                if (inputLabel.innerHTML == '0') {
-                    inputLabel.innerHTML = pushed;
-
-                } else {
-                    var currentLength = inputLabel.innerHTML.length;
-                    if (currentLength < maxLength) {
-                        inputLabel.innerHTML += pushed;
-                    }
-                }
+              if (inputLabel.innerHTML === '0' && pushed === '0') {
+                inputLabel.innerHTML = pushed;
+              }
+      
+              if (inputLabel.innerHTML.length < maxLength) {
+                inputLabel.innerHTML += pushed;
+              }
             }
+          }
         }
-    </script>
+      </script>
 </body>
 
 </html>
